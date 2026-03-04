@@ -91,25 +91,25 @@ Where:
 
 Frequencies are ranked by amplitude:
 
-$An=an2+bn2A_n = \sqrt{a_n^2 + b_n^2}An​=an2​+bn2​​ $
+$A_n= \sqrt{a_n^2 + b_n^2}; A_n^2​=a_n^2​+b_n^2​​ $
 
 A small subset of frequencies is selected to represent the base price evolution
 (e.g. annual, weekly, daily, intraday components).
 
 ### 4.3 Regression model
 
-Single-output Gaussian Process Regression (GPR)
-One model per Fourier coefficient
-Inputs: annual price drivers
-Targets: annual Fourier coefficients
-Validation: leave-one-year-out cross-validation
-Metric: MAPE on reconstructed hourly base price
+-Single-output Gaussian Process Regression (GPR)
+-One model per Fourier coefficient
+-Inputs: annual price drivers
+-Targets: annual Fourier coefficients
+-Validation: leave-one-year-out cross-validation
+-Metric: MAPE on reconstructed hourly base price
 
 ### 4.4 Price reconstruction
 
 Future hourly prices are generated as:
 
-$ptfuture=ftpredicted+Rtsampledp_t^{\text{future}} = f_t^{\text{predicted}} + R_t^{\text{sampled}}ptfuture​=ftpredicted​+Rtsampled​ $
+$p_t^{\text{future}} = f_t^{\text{predicted}} + R_t^{\text{sampled}}$
 
 Where:
 $ftf_tft​$: reconstructed base evolution from predicted Fourier coefficients
