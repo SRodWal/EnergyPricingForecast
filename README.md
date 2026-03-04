@@ -80,7 +80,7 @@ b. Annual Price Divers:
 
 For each year, hourly electricity prices $p_t$ are decomposed as:
 
-$p_t = a_0 + \sum_{n=1}^{N/2} \left[a_n \cos\left(\frac{2\pi n t}{N}\right) + b_n \sin\left(\frac{2\pi n t}{N}\right) \right]$
+$$p_t = a_0 + \sum_{n=1}^{N/2} \left[a_n \cos\left(\frac{2\pi n t}{N}\right) + b_n \sin\left(\frac{2\pi n t}{N}\right) \right]$$
 
 Where:
 - $N = 8760$ is the number of hours in a year  
@@ -91,7 +91,7 @@ Where:
 
 Frequencies are ranked by amplitude:
 
-$A_n= \sqrt{a_n^2 + b_n^2}; A_n^2​=a_n^2​+b_n^2​​ $
+$center A_n= \sqrt{a_n^2 + b_n^2} ;  A_n^2​=a_n^2​+b_n^2​​ $
 
 A small subset of frequencies is selected to represent the base price evolution
 (e.g. annual, weekly, daily, intraday components).
@@ -109,7 +109,9 @@ A small subset of frequencies is selected to represent the base price evolution
 
 Future hourly prices are generated as:
 
-$p_t^{\text{future}} = f_t^{\text{predicted}} + R_t^{\text{sampled}}$
+$$
+p_t^{\text{future}} = f_t^{\text{predicted}} + R_t^{\text{sampled}}
+$$
 
 Where:
 $ftf_tft​$: reconstructed base evolution from predicted Fourier coefficients
