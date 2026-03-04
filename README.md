@@ -69,8 +69,8 @@ a. Hourly Electric Prices
 b. Annual Price Divers:
 - Annual Electric Demand/Generation
 - Annual Generation by technology
-- Fuel/Oil/Gas/Coal/LPG prices
-    year | demand_gwh | solar_gen_gwh | gas_gen_gwh | gas_price | oil_price
+- Fuel/Oil/Gas/Coal/LPG prices:
+(year | demand_gwh | solar_gen_gwh | gas_gen_gwh | gas_price | oil_price)
 
 ---
 
@@ -79,6 +79,7 @@ b. Annual Price Divers:
 ### 4.1 Fourier decomposition
 
 For each year, hourly electricity prices $p_t$ are decomposed as:
+
 $p_t = a_0 + \sum_{n=1}^{N/2} \left[a_n \cos\left(\frac{2\pi n t}{N}\right) + b_n \sin\left(\frac{2\pi n t}{N}\right) \right]$
 
 Where:
@@ -87,12 +88,16 @@ Where:
 - $a_n$ and $b_n$ are Fourier coefficients associated with frequency $n$
 
 ### 4.2 Dominant frequency selection
+
 Frequencies are ranked by amplitude:
-$$ An=an2+bn2A_n = \sqrt{a_n^2 + b_n^2}An​=an2​+bn2​​ $$
+
+$An=an2+bn2A_n = \sqrt{a_n^2 + b_n^2}An​=an2​+bn2​​ $
+
 A small subset of frequencies is selected to represent the base price evolution
 (e.g. annual, weekly, daily, intraday components).
 
-4.3 Regression model
+### 4.3 Regression model
+
 Single-output Gaussian Process Regression (GPR)
 One model per Fourier coefficient
 Inputs: annual price drivers
@@ -100,9 +105,12 @@ Targets: annual Fourier coefficients
 Validation: leave-one-year-out cross-validation
 Metric: MAPE on reconstructed hourly base price
 
-4.4 Price reconstruction
+### 4.4 Price reconstruction
+
 Future hourly prices are generated as:
-$$ ptfuture=ftpredicted+Rtsampledp_t^{\text{future}} = f_t^{\text{predicted}} + R_t^{\text{sampled}}ptfuture​=ftpredicted​+Rtsampled​ $$
+
+$ptfuture=ftpredicted+Rtsampledp_t^{\text{future}} = f_t^{\text{predicted}} + R_t^{\text{sampled}}ptfuture​=ftpredicted​+Rtsampled​ $
+
 Where:
 $ftf_tft​$: reconstructed base evolution from predicted Fourier coefficients
 $RtR_tRt​$: residual profile sampled from historical years
