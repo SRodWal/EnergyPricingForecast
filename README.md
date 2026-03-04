@@ -101,13 +101,12 @@ A small subset of frequencies is selected to represent the base price evolution
 (e.g. annual, weekly, daily, intraday components).
 
 ### 4.3 Regression model
-
--Single-output Gaussian Process Regression (GPR)
--One model per Fourier coefficient
--Inputs: annual price drivers
--Targets: annual Fourier coefficients
--Validation: leave-one-year-out cross-validation
--Metric: MAPE on reconstructed hourly base price
+- Single-output Gaussian Process Regression (GPR)
+- One model per Fourier coefficient
+- Inputs: annual price drivers
+- Targets: annual Fourier coefficients
+- Validation: leave-one-year-out cross-validation
+- Metric: MAPE on reconstructed hourly base price
 
 ### 4.4 Price reconstruction
 
@@ -122,3 +121,16 @@ Where:
 - $R_t​$: residual profile sampled from historical years
 
 ---
+
+## 5. Uncertainty Analysis
+
+### 5.1 Uncertainty in price drivers is modeled using:
+- Empirical forecast error distributions
+- Correlated multivariate sampling
+- Monte Carlo simulation
+
+### 5.2 Outputs include:
+- Hourly price distributions
+- Annual P5 / P50 / P95 price trajectories
+
+
