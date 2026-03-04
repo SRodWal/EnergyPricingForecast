@@ -61,12 +61,14 @@ src/ltppf/
 ## 3. Data Requirements
 
 a. Hourly Electric Prices
+
     i. Wholesale Hourly Prices
     ii. 3 to 5 consecutive years
     iii. Consistent Market / Spot Market
     iV. Leap years to be standardized to 8760 h/yr
 
 b. Annual Price Divers:
+
     i. Annual Electric Demand/Generation
     ii. Annual Generation by technology
     iii. Fuel/Oil/Gas/Coal/LPG prices
@@ -78,20 +80,23 @@ b. Annual Price Divers:
 
     4.1 Fourier decomposition
         For each year, hourly prices ptp_tpt​ are decomposed as:
+        $$
         pt=a0+∑n=1N/2[ancos⁡(2πntN)+bnsin⁡(2πntN)]p_t = a_0 + \sum_{n=1}^{N/2}
         \left[
         a_n \cos\left(\frac{2\pi n t}{N}\right)
         + b_n \sin\left(\frac{2\pi n t}{N}\right)
         \right]pt​=a0​+n=1∑N/2​[an​cos(N2πnt​)+bn​sin(N2πnt​)]
+        $$
         Where:
-
-        N=8760N = 8760N=8760
-        a0a_0a0​ is the annual mean price
-        an,bna_n, b_nan​,bn​ are Fourier coefficients
+        $N=8760N = 8760N=8760$
+        $a0a_0a0$​ is the annual mean price
+        $an$,$bna_n$, $b_nan$​,$bn$​ are Fourier coefficients
 
     4.2 Dominant frequency selection
         Frequencies are ranked by amplitude:
+        $$
         An=an2+bn2A_n = \sqrt{a_n^2 + b_n^2}An​=an2​+bn2​​
+        $$
         A small subset of frequencies is selected to represent the base price evolution
         (e.g. annual, weekly, daily, intraday components).
 
@@ -105,8 +110,10 @@ b. Annual Price Divers:
 
     4.4 Price reconstruction
         Future hourly prices are generated as:
+        $$
         ptfuture=ftpredicted+Rtsampledp_t^{\text{future}} = f_t^{\text{predicted}} + R_t^{\text{sampled}}ptfuture​=ftpredicted​+Rtsampled​
+        $$
         Where:
 
-        ftf_tft​: reconstructed base evolution from predicted Fourier coefficients
-        RtR_tRt​: residual profile sampled from historical years
+        $ftf_tft​$: reconstructed base evolution from predicted Fourier coefficients
+        $RtR_tRt​$: residual profile sampled from historical years
