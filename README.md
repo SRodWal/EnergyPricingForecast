@@ -91,7 +91,7 @@ Where:
 
 Frequencies are ranked by amplitude:
 
-$center A_n= \sqrt{a_n^2 + b_n^2} ;  A_n^2​=a_n^2​+b_n^2​​ $
+$$A_n= \sqrt{a_n^2 + b_n^2} ;  A_n^2​=a_n^2​+b_n^2​​ $$
 
 A small subset of frequencies is selected to represent the base price evolution
 (e.g. annual, weekly, daily, intraday components).
@@ -114,5 +114,5 @@ p_t^{\text{future}} = f_t^{\text{predicted}} + R_t^{\text{sampled}}
 $$
 
 Where:
-$ftf_tft​$: reconstructed base evolution from predicted Fourier coefficients
-$RtR_tRt​$: residual profile sampled from historical years
+-$f_t​$: reconstructed base evolution from predicted Fourier coefficients
+-$R_t​$: residual profile sampled from historical years
