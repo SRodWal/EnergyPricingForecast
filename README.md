@@ -78,19 +78,23 @@ b. Annual Price Divers:
 
 ## 4. Methodology Details
 
-    4.1 Fourier decomposition
-        For each year, hourly prices ptp_tpt​ are decomposed as:
-        $$
-        pt=a0+∑n=1N/2[ancos⁡(2πntN)+bnsin⁡(2πntN)]p_t = a_0 + \sum_{n=1}^{N/2}
-        \left[
-        a_n \cos\left(\frac{2\pi n t}{N}\right)
-        + b_n \sin\left(\frac{2\pi n t}{N}\right)
-        \right]pt​=a0​+n=1∑N/2​[an​cos(N2πnt​)+bn​sin(N2πnt​)]
-        $$
-        Where:
-        $N=8760N = 8760N=8760$
-        $a0a_0a0$​ is the annual mean price
-        $an$,$bna_n$, $b_nan$​,$bn$​ are Fourier coefficients
+### 4.1 Fourier decomposition
+
+For each year, hourly electricity prices $p_t$ are decomposed as:
+
+$$
+p_t = a_0 + \sum_{n=1}^{N/2}
+\left[
+a_n \cos\left(\frac{2\pi n t}{N}\right)
++ b_n \sin\left(\frac{2\pi n t}{N}\right)
+\right]
+$$
+
+Where:
+
+- $N = 8760$ is the number of hours in a year  
+- $a_0$ is the annual mean electricity price  
+- $a_n$ and $b_n$ are Fourier coefficients associated with frequency $n$
 
     4.2 Dominant frequency selection
         Frequencies are ranked by amplitude:
