@@ -61,18 +61,16 @@ src/ltppf/
 ## 3. Data Requirements
 
 a. Hourly Electric Prices
-
-    i. Wholesale Hourly Prices
-    ii. 3 to 5 consecutive years
-    iii. Consistent Market / Spot Market
-    iV. Leap years to be standardized to 8760 h/yr
+- Wholesale Hourly Prices
+- 3 to 5 consecutive years
+- Consistent Market / Spot Market
+- Leap years to be standardized to 8760 h/yr
 
 b. Annual Price Divers:
-
-    i. Annual Electric Demand/Generation
-    ii. Annual Generation by technology
-    iii. Fuel/Oil/Gas/Coal/LPG prices
-    e.i.     year | demand_gwh | solar_gen_gwh | gas_gen_gwh | gas_price | oil_price
+- Annual Electric Demand/Generation
+- Annual Generation by technology
+- Fuel/Oil/Gas/Coal/LPG prices
+    year | demand_gwh | solar_gen_gwh | gas_gen_gwh | gas_price | oil_price
 
 ---
 
@@ -81,43 +79,30 @@ b. Annual Price Divers:
 ### 4.1 Fourier decomposition
 
 For each year, hourly electricity prices $p_t$ are decomposed as:
-
-$$
-p_t = a_0 + \sum_{n=1}^{N/2}
-\left[
-a_n \cos\left(\frac{2\pi n t}{N}\right)
-+ b_n \sin\left(\frac{2\pi n t}{N}\right)
-\right]
-$$
+$p_t = a_0 + \sum_{n=1}^{N/2} \left[a_n \cos\left(\frac{2\pi n t}{N}\right) + b_n \sin\left(\frac{2\pi n t}{N}\right) \right]$
 
 Where:
-
 - $N = 8760$ is the number of hours in a year  
 - $a_0$ is the annual mean electricity price  
 - $a_n$ and $b_n$ are Fourier coefficients associated with frequency $n$
 
-    4.2 Dominant frequency selection
-        Frequencies are ranked by amplitude:
-        $$
-        An=an2+bn2A_n = \sqrt{a_n^2 + b_n^2}An​=an2​+bn2​​
-        $$
-        A small subset of frequencies is selected to represent the base price evolution
-        (e.g. annual, weekly, daily, intraday components).
+### 4.2 Dominant frequency selection
+Frequencies are ranked by amplitude:
+$$ An=an2+bn2A_n = \sqrt{a_n^2 + b_n^2}An​=an2​+bn2​​ $$
+A small subset of frequencies is selected to represent the base price evolution
+(e.g. annual, weekly, daily, intraday components).
 
-    4.3 Regression model
-        Single-output Gaussian Process Regression (GPR)
-        One model per Fourier coefficient
-        Inputs: annual price drivers
-        Targets: annual Fourier coefficients
-        Validation: leave-one-year-out cross-validation
-        Metric: MAPE on reconstructed hourly base price
+4.3 Regression model
+Single-output Gaussian Process Regression (GPR)
+One model per Fourier coefficient
+Inputs: annual price drivers
+Targets: annual Fourier coefficients
+Validation: leave-one-year-out cross-validation
+Metric: MAPE on reconstructed hourly base price
 
-    4.4 Price reconstruction
-        Future hourly prices are generated as:
-        $$
-        ptfuture=ftpredicted+Rtsampledp_t^{\text{future}} = f_t^{\text{predicted}} + R_t^{\text{sampled}}ptfuture​=ftpredicted​+Rtsampled​
-        $$
-        Where:
-
-        $ftf_tft​$: reconstructed base evolution from predicted Fourier coefficients
-        $RtR_tRt​$: residual profile sampled from historical years
+4.4 Price reconstruction
+Future hourly prices are generated as:
+$$ ptfuture=ftpredicted+Rtsampledp_t^{\text{future}} = f_t^{\text{predicted}} + R_t^{\text{sampled}}ptfuture​=ftpredicted​+Rtsampled​ $$
+Where:
+$ftf_tft​$: reconstructed base evolution from predicted Fourier coefficients
+$RtR_tRt​$: residual profile sampled from historical years
