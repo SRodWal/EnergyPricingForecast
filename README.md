@@ -95,7 +95,7 @@ Where:
 
 Frequencies are ranked by amplitude:
 
-$$  A_n^2​=a_n^2​+b_n^2​​ \longrightarrow \xrightarrow{\text{heat}} \Rightarrow A_n= \sqrt{a_n^2 + b_n^2}$$
+$$A_n^2​=a_n^2​+b_n^2​​  \Rightarrow  A_n= \sqrt{a_n^2 + b_n^2}$$
 
 A small subset of frequencies is selected to represent the base price evolution
 (e.g. annual, weekly, daily, intraday components).
