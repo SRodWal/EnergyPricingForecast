@@ -70,8 +70,12 @@ b. Annual Price Divers:
 - Annual Electric Demand/Generation
 - Annual Generation by technology
 - Fuel/Oil/Gas/Coal/LPG prices:
-(year | demand_gwh | solar_gen_gwh | gas_gen_gwh | gas_price | oil_price)
-
+```
+year	total_generation	solar_gen	bunker_gen	hydro_gen	eolic_gen	crude_prices
+2019						
+2020						
+2021						
+```
 ---
 
 ## 4. Methodology Details
@@ -114,5 +118,7 @@ p_t^{\text{future}} = f_t^{\text{predicted}} + R_t^{\text{sampled}}
 $$
 
 Where:
--$f_t​$: reconstructed base evolution from predicted Fourier coefficients
--$R_t​$: residual profile sampled from historical years
+- $f_t​$: reconstructed base evolution from predicted Fourier coefficients
+- $R_t​$: residual profile sampled from historical years
+
+---
