@@ -45,7 +45,7 @@ def reconstruct_from_coeffs(N: int, a: np.ndarray, b: np.ndarray, max_harmonic: 
     return y
 
 
-def decompose_hourly_by_year(df: pd.DataFrame, price_col: str = "price", enforce_hourly=False):
+def decompose_hourly_by_year(df: pd.DataFrame, price_col: str = "price", enforce_hourly=True):
     if not isinstance(df.index, pd.DatetimeIndex):
         raise ValueError("df must have a DatetimeIndex.")
 
